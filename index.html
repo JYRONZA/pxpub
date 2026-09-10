@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Sample</title>
+    <style>
+      :root {
+        --bg:             #f0f2ed;
+        --surface:        #ffffff;
+        --surface-alt:    #f5f5f0;
+        --border-subtle:  rgba(0,0,0,0.09);
+        --border-strong:  rgba(0,0,0,0.18);
+        --text:           #1a1a1a;
+        --text-secondary: #444444;
+        --text-muted:     #888888;
+        --accent:         #DBFF00;
+        --accent-text:    #111111;
+        --accent-secondary: #FF2D78;
+        --success:    #4a7a00;
+        --success-bg: #eaf2d0;
+        --warning:    #a07000;
+        --warning-bg: #fdf3d0;
+        --error:      #c0392b;
+        --error-bg:   #fde8e6;
+        --shadow-md:  0 2px 8px rgba(0,0,0,0.08);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg:             #111111;
+          --surface:        #1a1a1a;
+          --surface-alt:    #222222;
+          --border-subtle:  rgba(255,255,255,0.1);
+          --border-strong:  rgba(255,255,255,0.2);
+          --text:           #f0f0f0;
+          --text-secondary: #c0c0c0;
+          --text-muted:     #666666;
+          --success:    #9ACD00;
+          --success-bg: #1a2e00;
+          --warning:    #F5C842;
+          --warning-bg: #2e2200;
+          --error:      #F56E6E;
+          --error-bg:   #2e0a0a;
+          --shadow-md:  0 2px 8px rgba(0,0,0,0.3);
+        }
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        padding: 14px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        color: var(--text);
+        background: var(--bg);
+        -webkit-text-size-adjust: 100%;
+      }
+
+      .wrap { max-width: 520px; margin: 0 auto; }
+
+      .brand {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-muted);
+        margin: 2px 2px 8px;
+      }
+
+      h1.header {
+        background: var(--accent);
+        color: var(--accent-text);
+        padding: 12px 15px;
+        font-weight: 900;
+        font-size: 20px;
+        line-height: 1.15;
+        border-radius: 8px;
+        border: 3px solid var(--accent);
+        margin: 0 0 12px;
+        word-break: break-word;
+      }
+
+      .card {
+        border-radius: 8px;
+        border: 3px solid var(--accent);
+        background: var(--surface);
+        box-shadow: var(--shadow-md);
+        margin-bottom: 12px;
+        overflow: hidden;
+      }
+
+      .card-body { padding: 14px; }
+
+      .product {
+        font-size: 19px;
+        font-weight: 900;
+        letter-spacing: -0.3px;
+        line-height: 1.25;
+        margin: 0 0 8px;
+        word-break: break-word;
+      }
+
+      .chip {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 800;
+        border: 1px solid var(--border-subtle);
+        background: var(--surface-alt);
+        color: var(--text-secondary);
+        margin: 0 6px 6px 0;
+      }
+      .chip.id {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--accent-text);
+        letter-spacing: 0.5px;
+      }
+
+      .rows { margin-top: 4px; }
+
+      .row {
+        display: flex;
+        gap: 12px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+      .row:last-child { border-bottom: none; }
+
+      .key {
+        flex: 0 0 116px;
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: var(--text-muted);
+        padding-top: 2px;
+      }
+
+      .val { flex: 1 1 auto; line-height: 1.5; word-break: break-word; white-space: pre-wrap; }
+
+      @media (max-width: 420px) {
+        .row { flex-direction: column; gap: 2px; }
+        .key { flex: none; }
+      }
+
+      a.btn {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        border: 1px solid var(--border-strong);
+        border-radius: 8px;
+        padding: 13px 14px;
+        background: var(--surface);
+        color: var(--text);
+        font-size: 14px;
+        font-weight: 700;
+      }
+      a.btn.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--accent-text);
+      }
+
+      .note {
+        font-size: 11px;
+        color: var(--text-muted);
+        line-height: 1.6;
+        margin: 10px 2px 0;
+      }
+
+      .snapshot {
+        background: var(--warning-bg);
+        border: 1px solid var(--warning);
+        color: var(--warning);
+        border-radius: 8px;
+        padding: 9px 11px;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1.5;
+        margin-bottom: 12px;
+      }
+
+      .empty { padding: 8px 0; line-height: 1.6; color: var(--text-secondary); }
+      .empty code {
+        font-family: monospace;
+        background: var(--surface-alt);
+        padding: 1px 5px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="brand">
+        <span id="printedOn"></span>
+      </div>
+      <h1 class="header" id="title">Sample</h1>
+      <div id="content"></div>
+    </div>
+
+    <script>
+
+      var FIELDS = ['id', 'product', 'supplier', 'material', 'received', 'purpose'];
+
+      function esc(s) {
+        return String(s == null ? '' : s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function decodeField(raw) {
+        try {
+          return decodeURIComponent(String(raw || '').replace(/\+/g, ' ')).trim();
+        } catch (err) {
+          return String(raw || '').replace(/\+/g, ' ').trim();
+        }
+      }
+
+      function parseHash() {
+        var hash = String(location.hash || '').replace(/^#/, '');
+        if (!hash) return null;
+        var parts = hash.split('~');
+        if (parts[0] === 'v1') parts.shift();
+        if (!parts.length) return null;
+        var sample = {};
+        FIELDS.forEach(function (name, i) { sample[name] = decodeField(parts[i]); });
+        return sample.id || sample.product ? sample : null;
+      }
+
+      function formatDate(value) {
+        var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value || '').trim());
+        return m ? m[3] + '/' + m[2] + '/' + m[1] : String(value == null ? '' : value);
+      }
+
+      function row(key, value) {
+        if (!value) return '';
+        return '<div class="row"><div class="key">' + esc(key) +
+          '</div><div class="val">' + esc(value) + '</div></div>';
+      }
+
+      function render() {
+        var sample = parseHash();
+        var title = document.getElementById('title');
+        var content = document.getElementById('content');
+
+        if (!sample) {
+          title.textContent = 'Nothing to show';
+          content.innerHTML =
+            '<div class="card"><div class="card-body"><div class="empty">' +
+            'There were no details in the link you opened.' +
+            '</div></div></div>';
+          return;
+        }
+
+        document.title = sample.id || 'Sample';
+        title.textContent = sample.id || 'Sample';
+        if (sample.received) {
+          document.getElementById('printedOn').textContent =
+            'Received ' + formatDate(sample.received);
+        }
+
+        var chips = '';
+        if (sample.id) chips += '<span class="chip id">' + esc(sample.id) + '</span>';
+        if (sample.material) chips += '<span class="chip">' + esc(sample.material) + '</span>';
+
+        content.innerHTML =
+          '<div class="card"><div class="card-body">' +
+            (sample.product ? '<div class="product">' + esc(sample.product) + '</div>' : '') +
+            (chips ? '<div>' + chips + '</div>' : '') +
+            '<div class="rows">' +
+              row('Supplier', sample.supplier) +
+              row('Material', sample.material) +
+              row('Received', formatDate(sample.received)) +
+              row('Original purpose', sample.purpose) +
+            '</div>' +
+          '</div></div>' +
+          '<div class="snapshot">As recorded when this label was printed.</div>';
+      }
+
+      window.addEventListener('hashchange', render);
+      render();
+    </script>
+  </body>
+</html>
