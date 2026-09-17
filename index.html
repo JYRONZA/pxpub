@@ -210,7 +210,8 @@
 
     <script>
 
-      var FIELDS = ['id', 'product', 'supplier', 'material', 'received', 'purpose'];
+      var FIELDS = ['id', 'product', 'supplier', 'material', 'received', 'purpose',
+        'colour'];
 
       function esc(s) {
         return String(s == null ? '' : s)
@@ -232,7 +233,7 @@
         var hash = String(location.hash || '').replace(/^#/, '');
         if (!hash) return null;
         var parts = hash.split('~');
-        if (parts[0] === 'v1') parts.shift();
+        if (/^v\d+$/.test(parts[0])) parts.shift();
         if (!parts.length) return null;
         var sample = {};
         FIELDS.forEach(function (name, i) { sample[name] = decodeField(parts[i]); });
@@ -282,6 +283,7 @@
             '<div class="rows">' +
               row('Supplier', sample.supplier) +
               row('Material', sample.material) +
+              row('Colour', sample.colour) +
               row('Received', formatDate(sample.received)) +
               row('Original purpose', sample.purpose) +
             '</div>' +
